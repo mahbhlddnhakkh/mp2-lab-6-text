@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: start_cmake
+      run: cmake .
+    - name: make
+      run: make
+    - name: make test
+      run: ./bin/test_Text
+    - name: make sample mystring
+      run: ./bin/sample_mystring
+    - name: make sample hierarchylist
+      run: ./bin/sample_hierarchylist
+    - name: make sample text
+      run: ./bin/sample_text
